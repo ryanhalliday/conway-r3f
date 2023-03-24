@@ -1,31 +1,14 @@
 import {useCallback, useRef, useState} from 'react'
-import {Grid, Plane} from "@react-three/drei";
-import Cell from "./Cell";
+import {Plane} from "@react-three/drei";
 import produce from "immer";
 import {button, useControls} from "leva";
+import Board from "./Board";
 
 const gridSize = 10;
 
 export default function Game({ ...props }) {
-  // TODO GameBoard should be it's own component
-  //        that we pass the cells to.
-
   const runningRef = useRef(null);
   const gameTickRef = useRef(1200);
-
-  useControls({
-    // gridSize: 10,
-    gameTick: {
-      value: 1200,
-      min: 100,
-      max: 2000,
-      step: 100,
-      label: 'Game Tick',
-      onChange: (value) => {
-        gameTickRef.current = value;
-      }
-    }
-  });
 
   const offset = gridSize / 2 - 0.5;
 
@@ -69,9 +52,17 @@ export default function Game({ ...props }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-
-
   useControls({
+    gameTick: {
+      value: 1200,
+      min: 100,
+      max: 2000,
+      step: 100,
+      label: 'Game Tick',
+      onChange: (value) => {
+        gameTickRef.current = value;
+      }
+    },
     "Clear": button(() => {
       setCells(initialGrid());
     }),
@@ -81,9 +72,13 @@ export default function Game({ ...props }) {
     })
   });
 
+  const splitVec3 = (pos) => {
+    return pos.toArray().map((v) => Math.round(v + offset));
+  }
+
   const boxClick = (e) => {
     e.stopPropagation();
-    const [x, y, z] = e.object.position.toArray().map((v) => Math.round(v + offset));
+    const [x, y, z] = splitVec3(e.object.position);
     setCells(c => {
       return produce(c, draft => {
         draft[x][z] = 0;
@@ -91,18 +86,9 @@ export default function Game({ ...props }) {
     });
   }
 
-  const boxes = cells.map((row, i) => {
-    return row.reduce((rowCells, cell, j) => {
-      if (!cell){ return rowCells; }
-      const newCell = <Cell position={[i - offset, 0.5, j - offset]} key={`${i}-${j}`} onClick={boxClick} />
-      rowCells.push(newCell);
-      return rowCells; // I still hate spreading pointlessly.
-    }, []);
-  });
-
   const gridClick = (e) => {
     e.stopPropagation();
-    const [x, y, z] = e.point.toArray().map((v) => Math.round(v + offset));
+    const [x, y, z] = splitVec3(e.point);
     setCells(c => {
       return produce(c, draft => {
         // We don't toggle here as we can handle toggle off in block click
@@ -113,9 +99,8 @@ export default function Game({ ...props }) {
 
   return (
     <group ref={mesh} {...props}>
-      <Grid cellColor="white" cellSize={1} args={[gridSize, gridSize]} />
+      <Board gridSize={gridSize} cells={cells} cellClick={boxClick} cellOffset={offset} />
       <Plane visible={false} args={[gridSize, gridSize]} position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} onClick={gridClick} />
-      {boxes}
     </group>
   )
 }

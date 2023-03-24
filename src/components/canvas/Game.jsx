@@ -72,35 +72,24 @@ export default function Game({ ...props }) {
     })
   });
 
-  const splitVec3 = (pos) => {
-    return pos.toArray().map((v) => Math.round(v + offset));
+  const click = (e, position) => {
+    e.stopPropagation();
+    const [x, _, z] = position.toArray().map((v) => Math.round(v + offset));
+    toggleCell(x, z);
   }
 
-  const boxClick = (e) => {
-    e.stopPropagation();
-    const [x, y, z] = splitVec3(e.object.position);
+  const toggleCell = (x, z) => {
     setCells(c => {
       return produce(c, draft => {
-        draft[x][z] = 0;
-      })
-    });
-  }
-
-  const gridClick = (e) => {
-    e.stopPropagation();
-    const [x, y, z] = splitVec3(e.point);
-    setCells(c => {
-      return produce(c, draft => {
-        // We don't toggle here as we can handle toggle off in block click
-        draft[x][z] = 1;
+        draft[x][z] = draft[x][z] === 0 ? 1 : 0;
       })
     });
   }
 
   return (
     <group ref={mesh} {...props}>
-      <Board gridSize={gridSize} cells={cells} cellClick={boxClick} cellOffset={offset} />
-      <Plane visible={false} args={[gridSize, gridSize]} position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} onClick={gridClick} />
+      <Board gridSize={gridSize} cells={cells} cellClick={(e) => click(e, e.object.position)} cellOffset={offset} />
+      <Plane visible={false} args={[gridSize, gridSize]} position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]} onClick={(e) => click(e, e.point)} />
     </group>
   )
 }

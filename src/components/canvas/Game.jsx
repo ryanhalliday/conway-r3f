@@ -1,5 +1,5 @@
-import {useCallback, useEffect, useRef, useState} from 'react'
-import {Box, Grid, Plane} from "@react-three/drei";
+import {useCallback, useRef, useState} from 'react'
+import {Grid, Plane} from "@react-three/drei";
 import Cell from "./Cell";
 import produce from "immer";
 import {button, useControls} from "leva";
@@ -13,7 +13,7 @@ export default function Game({ ...props }) {
   const runningRef = useRef(null);
   const gameTickRef = useRef(1200);
 
-  const {gameTick} = useControls({
+  useControls({
     // gridSize: 10,
     gameTick: {
       value: 1200,
@@ -29,8 +29,12 @@ export default function Game({ ...props }) {
 
   const offset = gridSize / 2 - 0.5;
 
+  const initialGrid = () => {
+    return Array(gridSize).fill(0).map(() => Array(gridSize).fill(0));
+  }
+
   const mesh = useRef(null)
-  let [cells, setCells] = useState(Array(gridSize).fill(0).map(() => Array(gridSize).fill(0)));
+  let [cells, setCells] = useState(initialGrid());
 
   const updateBoard = useCallback(() => {
     if (!runningRef.current){ return; }
@@ -68,6 +72,9 @@ export default function Game({ ...props }) {
 
 
   useControls({
+    "Clear": button(() => {
+      setCells(initialGrid());
+    }),
     "Start/Stop": button(() => {
       runningRef.current = !runningRef.current;
       runningRef.current && updateBoard();

@@ -13,15 +13,20 @@ npm install
 npm run dev
 ```
 
+## Exporting / Releasing
+
+```bash
+npm run export
+# sync the out/ directory to a webserver
+```
+
 ## To do
 
 - [ ] Add a "random" button
 - [ ] Grid size changes
-- [ ] Next.js export to static site, gh-pages
+- [ ] Host it somewhere maybe? Cute portfolio piece.
 - [ ] 3D???
 - [ ] If I am really bored, this was meant to be Typescript
-
-_Thanks Copilot for suggestions 2/4 lol_
 
 ## Footnotes
 This project was bootstrapped with [`create-r3f-app`](https://github.com/utsuboco/create-r3f-app)

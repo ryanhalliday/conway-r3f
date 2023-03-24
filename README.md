@@ -15,10 +15,8 @@ npm run dev
 
 ## To do
 
-- [ ] Add a "clear" button
 - [ ] Add a "random" button
 - [ ] Grid size changes
-- [ ] Tidy up the Next.js code and crap
 - [ ] Next.js export to static site, gh-pages
 - [ ] 3D???
 - [ ] If I am really bored, this was meant to be Typescript

@@ -1,27 +1,19 @@
 import dynamic from 'next/dynamic'
-import Instructions from '@/components/dom/Instructions'
-import Game from "../components/canvas/Game";
-import {useControls} from "leva";
 
 // Dynamic import is used to prevent a payload when the website starts, that includes threejs, r3f etc..
 // WARNING ! errors might get obfuscated by using dynamic import.
 // If something goes wrong go back to a static import to show the error.
 // https://github.com/pmndrs/react-three-next/issues/49
-const Logo = dynamic(() => import('@/components/canvas/Logo'), { ssr: false })
+const Scene = dynamic(() => import('@/components/canvas/Scene'), { ssr: true })
+const Game = dynamic(() => import('@/components/canvas/Game'), { ssr: false })
 
-// Dom components go here
-export default function Page(props) {
-
+export default function Page({sceneRef, ...props}) {
   return (
-    <>
-    </>
+    <Scene className='pointer-events-none' eventSource={sceneRef} eventPrefix='client'>
+      <Game />
+    </Scene>
   )
 }
-
-// Canvas components go here
-// It will receive same props as the Page component (from getStaticProps, etc.)
-// Page.canvas = (props) => <Logo scale={0.5} route='/blob' position-y={-1} />
-Page.canvas = (props) => <Game />
 
 export async function getStaticProps() {
   return { props: { title: 'Index' } }

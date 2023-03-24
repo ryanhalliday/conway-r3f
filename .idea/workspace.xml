@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c3a07d2-0263-4493-a441-6747dac0c52b" name="Changes" comment="Clean up Next crap">
+    <list default="true" id="9c3a07d2-0263-4493-a441-6747dac0c52b" name="Changes" comment="Clear grid option">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/canvas/Blob.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/canvas/Game.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/canvas/Game.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/canvas/Logo.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dom/Instructions.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/_app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/_app.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/blob.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/Scroll.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/Shader/Shader.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/Shader/glsl/shader.frag" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/Shader/glsl/shader.vert" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/hooks/usePostprocess.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +53,7 @@
       <workItem from="1679474519589" duration="5341000" />
       <workItem from="1679563953754" duration="5855000" />
       <workItem from="1679600544823" duration="930000" />
-      <workItem from="1679643059229" duration="4512000" />
+      <workItem from="1679643059229" duration="4556000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit, a working game!">
       <created>1679644617876</created>
@@ -74,7 +62,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679644617876</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Clean up Next crap">
+      <created>1679653048779</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1679653048779</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,6 +78,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit, a working game!" />
     <MESSAGE value="Clean up Next crap" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean up Next crap" />
+    <MESSAGE value="Clear grid option" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clear grid option" />
   </component>
 </project>

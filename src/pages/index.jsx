@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import {Canvas} from "@react-three/fiber";
 
 // Dynamic import is used to prevent a payload when the website starts, that includes threejs, r3f etc..
 // WARNING ! errors might get obfuscated by using dynamic import.
@@ -9,9 +10,11 @@ const Game = dynamic(() => import('@/components/canvas/Game'), { ssr: false })
 
 export default function Page({sceneRef, ...props}) {
   return (
-    <Scene className='pointer-events-none' eventSource={sceneRef} eventPrefix='client'>
-      <Game />
-    </Scene>
+    <Canvas {...props} camera={{position: [5,5,5]}}>
+      <Scene className='pointer-events-none' eventSource={sceneRef} eventPrefix='client'>
+        <Game />
+      </Scene>
+    </Canvas>
   )
 }
 

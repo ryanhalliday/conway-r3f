@@ -4,7 +4,7 @@ import produce from "immer";
 import {button, useControls} from "leva";
 import Board from "./Board";
 
-const gridSize = 10;
+let gridSize = 10;
 
 export default function Game({ ...props }) {
   const runningRef = useRef(null);
@@ -30,7 +30,7 @@ export default function Game({ ...props }) {
             for (let x = -1; x < 2; x++) {
               for (let y = -1; y < 2; y++) {
                 if (x === 0 && y === 0) {
-                  continue;
+                  continue; // current tile
                 }
                 if (i + x < 0 || i + x >= gridSize || j + y < 0 || j + y >= gridSize) {
                   continue;
@@ -53,6 +53,17 @@ export default function Game({ ...props }) {
   }, [])
 
   useControls({
+    gridSize: {
+      value: 10,
+      min: 5,
+      step: 1,
+      label: "Grid Size",
+      onChange: (value) => {
+        // TODO Don't clear existing grid.
+        gridSize = value;
+        setCells(initialGrid());
+      }
+    },
     gameTick: {
       value: 1200,
       min: 100,

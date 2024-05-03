@@ -25,7 +25,6 @@ npm run export
 ## To do
 
 - [ ] Add a "random" button
-- [ ] Github actions
 - [ ] 3D ruleset
 - [ ] Typescript I suppose
 

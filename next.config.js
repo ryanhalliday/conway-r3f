@@ -13,7 +13,10 @@ const nextConfig = {
   //   styledComponents: true,
   // },
   experimental: {},
-  images: {},
+  images: {
+    unoptimized: true
+  },
+  basePath: '/conway-r3f',
   reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
   webpack(config, { isServer }) {
     // audio support

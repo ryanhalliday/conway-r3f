@@ -1,8 +1,10 @@
 # Conway's Game of Life in React Three Fiber
 
+_Just a little experiment from one evening_
+
 ## Playing
 
-1. CLick on the grid to mark a cell as alive
+1. Click on the grid to mark a cell as alive
 2. Click "Start" to run the simulation
 3. Watch it go!
 

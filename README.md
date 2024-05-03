@@ -23,10 +23,9 @@ npm run export
 ## To do
 
 - [ ] Add a "random" button
-- [ ] Grid size changes
-- [ ] Host it somewhere maybe? Cute portfolio piece.
-- [ ] 3D???
-- [ ] If I am really bored, this was meant to be Typescript
+- [ ] Github actions
+- [ ] 3D ruleset
+- [ ] Typescript I suppose
 
 ## Footnotes
 This project was bootstrapped with [`create-r3f-app`](https://github.com/utsuboco/create-r3f-app)
